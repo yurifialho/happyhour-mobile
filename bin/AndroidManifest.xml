@@ -5,8 +5,17 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="17"
+        android:minSdkVersion="15"
         android:targetSdkVersion="19" />
+
+    <uses-permission android:name="br.edu.fa7.heppyhour.permission.MAPS_RECEIVER" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -16,12 +25,42 @@
         <activity
             android:name="br.edu.fa7.heppyhour.SplashActivity"
             android:label="@string/app_name" >
+        </activity>
+        
+        <activity
+            android:name="br.edu.fa7.heppyhour.CheckInActivity"
+            android:label="@string/app_name" >
+        </activity>
+		
+        <activity
+            android:name="br.edu.fa7.heppyhour.SplashScreen"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="br.edu.fa7.heppyhour.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="br.edu.fa7.heppyhour.EventoActivity"
+            android:label="@string/app_name" >
+        </activity>
+        
+        <receiver android:name="br.edu.fa7.heppyhour.sms.Sms">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
+        
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBD9LT-LLtT7bsB6SjLHbnDk1N8KkBygQw" />
+
     </application>
 
 </manifest>
