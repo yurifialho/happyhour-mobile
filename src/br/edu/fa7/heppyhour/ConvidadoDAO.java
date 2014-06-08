@@ -11,14 +11,14 @@ import android.database.sqlite.SQLiteDatabase;
 public class ConvidadoDAO {
 	
 	private final static String TABLE_NAME = "convidado";
-	private final static String DATABASE_NAME = "happyhour.db";
+	private final static String DATABASE_NAME = "happyhour";
 	private final static String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME +" ("
 			+ "_id INTEGER PRIMARY KEY AUTOINCREMENT, "
 			+ "nome TEXT NOT NULL, " 
 			+ "status TEXT NOT NULL, "
 			+ "contato TEXT NOT NULL, "
-			+ "evento INTEGER)";
-	private final static int DATABASE_VERSION = 1;
+			+ "evento TEXT); ";
+	private final static int DATABASE_VERSION = 2;
 	
 	private SQLHelper sqlHelper;
 	private SQLiteDatabase db;
@@ -70,6 +70,25 @@ public class ConvidadoDAO {
 		return p;
 	}
 	
+	public void delete(Convidado convidado) {
+		db.delete(TABLE_NAME, " _id = ?", new String[]{ ""+ convidado.getId()});
+	}
+	
+	
+	/*
+	 * Localiza um convidado pelo seu id
+	 */
+	public Convidado buscarConvidado(String tel) {
+		String[] columns = { "_id", "nome", "status", "contato", "evento" };
+		String[] param = { String.valueOf(tel) };
+		Cursor c = db.query(TABLE_NAME, columns, "contato = ?", param, null, null, "_id");
+		c.moveToFirst();
+		
+		Convidado p = setConvidado(c);
+		
+		return p;
+	}
+	
 	/*
 	 * Lista todos os convidados ordenados pelo Nome
 	 */
@@ -96,11 +115,11 @@ public class ConvidadoDAO {
 
 	private Convidado setConvidado(Cursor c) {
 		Convidado p = new Convidado();
-		p.setId(c.getInt(0));
-		p.setNome(c.getString(1));
-		p.setStatus(c.getString(2));
-		p.setContato(c.getString(3));
-		p.setEvento(c.getInt(4));
+		p.setId(c.getInt(c.getColumnIndex("_id")));
+		p.setNome(c.getString(c.getColumnIndex("nome")));
+		p.setStatus(c.getString(c.getColumnIndex("status")));
+		p.setContato(c.getString(c.getColumnIndex("contato")));
+		p.setEvento(c.getString(c.getColumnIndex("evento")));
 		return p;
 	}
 	

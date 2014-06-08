@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="15"
+        android:minSdkVersion="8"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="br.edu.fa7.heppyhour.permission.MAPS_RECEIVER" />
@@ -16,6 +16,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:allowBackup="true"
@@ -34,11 +35,9 @@
 		
         <activity
             android:name="br.edu.fa7.heppyhour.SplashScreen"
-            android:label="@string/app_name"
-            android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -50,7 +49,7 @@
             android:name="br.edu.fa7.heppyhour.EventoActivity"
             android:label="@string/app_name" >
         </activity>
-        
+        <activity android:name="br.edu.fa7.heppyhour.ListaContatosActivity" />
         <receiver android:name="br.edu.fa7.heppyhour.sms.Sms">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>

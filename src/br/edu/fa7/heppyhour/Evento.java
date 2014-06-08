@@ -14,6 +14,7 @@ public class Evento implements Serializable{
 	private String descricao;
 	private String data;
 	private String hora;
+	private String dono;
 	
 	public Evento(String local, String data, String hora, String descricao) {
 		this.local = local;
@@ -69,5 +70,11 @@ public class Evento implements Serializable{
 		this.descricao = descricao;
 	}
 
+	public String getDono() {
+		return dono;
+	}
 
+	public void setDono(String dono) {
+		this.dono = dono;
+	}
 }

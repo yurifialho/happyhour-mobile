@@ -13,9 +13,9 @@ public class Convidado implements Serializable{
 	private String nome;
 	private String status;
 	private String contato;
-	private Integer evento;
+	private String evento;
 	
-	public Convidado(String nome, String status, String contato, Integer evento) {
+	public Convidado(String nome, String status, String contato, String evento) {
 		this.nome = nome;
 		this.status = status;
 		this.contato = contato;
@@ -59,11 +59,11 @@ public class Convidado implements Serializable{
 		this.contato = contato;
 	}
 
-	public Integer getEvento() {
+	public String getEvento() {
 		return evento;
 	}
 
-	public void setEvento(Integer evento) {
+	public void setEvento(String evento) {
 		this.evento = evento;
 	}
 
